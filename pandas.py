@@ -116,9 +116,14 @@ elif question == 12:
     # Output :  D  O B
 elif question == 13:
     # Question 13 : Write down code to achieve output.
-    # input = "I am programmer"
-    # output = "programmer am I"
-    print("Not yet implemented.")
+    input = "I am programmer"
+    print(input[::-2])
+    output = "programmer am I"
+    list_str = input.split(" ")
+    list_str.reverse()
+    print(" ".join(list_str))
+    str = "vaibhav"
+    print("==>>>", str[-3])
 elif question == 14:
     print("Not yet implemented.")
     # Question 13 : Capitalize all characters from file.
@@ -273,5 +278,71 @@ elif question == 62:
 elif question == 63:
     # Question 15 : What is catch in python
     print("Not yet implemented.")
+elif question == 64:
+    from collections import Iterable
+    print("Condition Called....")
+
+    def f(args):
+        print("Function called....")
+        if not isinstance(args, Iterable):
+            print("Not Instance...")
+            yield args
+        else:
+            print("Else...")
+            for i in args:
+                print("Before yield...")
+                yield i
+
+
+    a = 4
+    ret = f(a)
+    print(next(ret))
+elif question == 65:
+
+    import copy
+    Data = list(range(0, 10))
+    print(Data)
+    DataTmp = copy.copy(Data)
+    Data.remove(5)  # remove one item
+    #
+    print(len(Data))
+    print(len(DataTmp))
+
+    def edit(l):
+        l[1] += 3
+        return l
+
+    a = [[1, 2], [2, 9], [3, 7]]
+    final = list(map(lambda x : edit(x), a))
+    print(final)
+    import sys
+    a = []
+    b = a
+    print("reference counts", sys.getrefcount(a))
+elif question == 66:
+    def test(a=1, b=2, c=1):
+        x = locals()
+        print(x)
+    test(a=5, b=6, c=4)
+
+    list5 = ["a", "b", "a", "b", "a", "b", "c"]
+    import copy
+    def remove_values_from_list(_list, val):
+        _list_temp = copy.copy(_list)
+        print(id(_list_temp))
+        for val_obj in _list_temp:
+            if val_obj == val:
+                _list.remove(val)
+    print(id(list5))
+    remove_values_from_list(list5, "a")
+    print(list5)
+elif question == 67:
+    import csv
+    import operator
+    filename = "data.csv"
+    with open(filename) as infile:
+        reader = csv.reader(infile, delimiter=',')
+        print(reader)
+        print(sorted(filter(None, reader), key=operator.itemgetter(1)))
 else:
     print("No question input...")
